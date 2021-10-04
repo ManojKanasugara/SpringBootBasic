@@ -21,6 +21,8 @@ public class CustomerController {
 
 	@PostMapping(value = "/post", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Customer save(@RequestBody Customer customer) {
+		
+		
 		return customerService.save(customer);
 
 	}

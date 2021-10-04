@@ -36,7 +36,7 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//****************************************************************
+//*****************************************************************
 		// Adding storage type and laptops
 		StorageType ssd512 = new StorageType("ssd", 512);
 		StorageType hdd = new StorageType("hdd", 1024);

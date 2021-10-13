@@ -1,14 +1,12 @@
 package com.lpatop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.lpatop.exception.CustomerNotFoundException;
 import com.lpatop.model.Address;
 import com.lpatop.model.Customer;
 import com.lpatop.repository.AddressRepository;
 import com.lpatop.repository.CustomerRepository;
 
-@Service
 public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository customerRepo;
@@ -33,7 +31,8 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer getCustomerById(long id) {
 		// TODO Auto-generated method stub
-		return customerRepo.findById(id).get();
+		return customerRepo.findById(id)
+				.orElseThrow(() -> new CustomerNotFoundException(" customer not found with id " + id));
 	}
 
 }

@@ -1,14 +1,18 @@
 package com.lpatop.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.lpatop.model.Customer;
 import com.lpatop.service.CustomerService;
 
@@ -16,20 +20,27 @@ import com.lpatop.service.CustomerService;
 @RequestMapping("/customer")
 public class CustomerController {
 
-	@Autowired
-	private CustomerService customerService;
+	private final CustomerService customerService;
+	private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
+
+	// constructor injection
+	public CustomerController(CustomerService customerService) {
+		this.customerService = customerService;
+	}
 
 	@PostMapping(value = "/post", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Customer save(@RequestBody Customer customer) {
-		
-		
-		return customerService.save(customer);
+	public ResponseEntity<Customer> save(@RequestBody @Valid Customer customer) {
+		log.info("enterted CustomerController save method");
+		return new ResponseEntity<Customer>(customerService.save(customer), HttpStatus.OK);
 
 	}
 
 	@GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Customer getCustomerById(@PathVariable long id) {
-
-		return customerService.getCustomerById(id);
+		log.info(log.getName() + " enterted CustomerController getCustomerById method ");
+		
+			return customerService.getCustomerById(id);
+		
 	}
+
 }

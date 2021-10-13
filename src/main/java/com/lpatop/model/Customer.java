@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "customer")
@@ -18,8 +20,10 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@NotEmpty(message = "first name cant be empty")
 	private String firstName;
 	private String lastName;
+	@Email(message = "email is invalid")
 	private String email;
 	private String phoneNumber;
 
@@ -28,7 +32,7 @@ public class Customer {
 
 	public Customer() {
 		super();
-		
+
 	}
 
 	public Customer(String firstName, String lastName, String email, String phoneNumber) {

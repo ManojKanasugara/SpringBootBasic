@@ -1,5 +1,10 @@
 package com.lpatop;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,7 +38,11 @@ public class DemoApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String...args) throws Exception {
+
+		
+		
+
 //*****************************************************************
 		// Adding storage type and laptops
 		StorageType ssd512 = new StorageType("ssd", 512);

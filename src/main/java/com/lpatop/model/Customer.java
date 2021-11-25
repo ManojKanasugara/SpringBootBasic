@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -26,8 +28,8 @@ public class Customer {
 	@Email(message = "email is invalid")
 	private String email;
 	private String phoneNumber;
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+	@JsonManagedReference
 	private Set<Address> addressList = new HashSet<>();
 
 	public Customer() {

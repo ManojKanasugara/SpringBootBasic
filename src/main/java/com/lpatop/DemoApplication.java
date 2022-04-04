@@ -1,7 +1,6 @@
 package com.lpatop;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,24 +55,10 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		int a = 11;
-		int b = 5;
-		int c = 7;
-
-		int aa[] = new int[3];
-		aa[0] = a;
-		aa[1] = b;
-		aa[2] = c;
-
-		Arrays.sort(aa);
-		int add = ((aa[1] * aa[1]) + (aa[0] * aa[0])) - ((aa[2] * aa[2]) + (aa[1] * aa[1]));
-		System.out.println(add < 0 ? add * -1 : add);
-//*****************************************************************
+	//*****************************************************************
 		// Adding storage type and laptops
 		
-		int aa1=3077;
-		String bb=Character.toString((char)aa1);
-		System.out.println(bb);
+	
 		
 		StorageType ssd512 = new StorageType("ssd", 512);
 		StorageType hdd = new StorageType("hdd", 1024);

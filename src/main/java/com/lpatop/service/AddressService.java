@@ -6,4 +6,6 @@ public interface AddressService {
 	
 	public Address save(Address address);
 
+	public double getMaxNumber();
+
 }
